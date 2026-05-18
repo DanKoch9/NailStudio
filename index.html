@@ -40,6 +40,23 @@
             flex-grow: 1;
             height: 1em;
         }
+
+        /* --- VLASTNÍ CSS ANIMACE PRO PLYNULÝ PŘECHOD --- */
+        @keyframes smoothFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-smooth-fade {
+            /* 0.6s trvání, ease-out křivka pro velmi organický, zjemněný dojezd */
+            animation: smoothFadeIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between antialiased">
@@ -66,7 +83,7 @@
 
 <main class="flex-grow">
 
-    <section id="tab-uvod" class="tab-content hidden animate-fade-in">
+    <section id="tab-uvod" class="tab-content hidden">
         <div class="relative h-[400px] w-full overflow-hidden flex items-center justify-center hero-gradient border-b border-[#F7E5F0]">
             <div class="absolute inset-0 bg-white/20 backdrop-blur-[1px]"></div>
             <div class="relative text-center z-10 p-6 flex flex-col items-center">
@@ -163,7 +180,7 @@
         </div>
     </section>
 
-    <section id="tab-cenik" class="tab-content hidden animate-fade-in">
+    <section id="tab-cenik" class="tab-content hidden">
         <div class="max-w-6xl mx-auto px-4 py-12">
             <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
                 <h1 class="text-4xl font-normal tracking-wide text-gray-800">Ceník služeb</h1>
@@ -278,7 +295,7 @@
         </div>
     </section>
 
-    <section id="tab-galerie" class="tab-content hidden animate-fade-in">
+    <section id="tab-galerie" class="tab-content hidden">
         <div class="max-w-6xl mx-auto px-4 py-12">
             <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
                 <h1 class="text-4xl font-normal tracking-wide text-gray-800">Naše práce</h1>
@@ -292,7 +309,7 @@
         </div>
     </section>
 
-    <section id="tab-kontakt" class="tab-content hidden animate-fade-in">
+    <section id="tab-kontakt" class="tab-content hidden">
         <div class="max-w-5xl mx-auto px-4 py-12">
             <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
                 <h1 class="text-4xl font-normal tracking-wide text-gray-800">Spojte se s námi</h1>
@@ -412,17 +429,27 @@
 </footer>
 
 <script>
-    // --- 1. Přepínač stránek (Tabs) ---
     function switchTab(tabId) {
+        // Skrýt všechny sekce a odebrat jim animační třídu pro reset
         document.querySelectorAll('.tab-content').forEach(content => {
             content.classList.add('hidden');
+            content.classList.remove('animate-smooth-fade');
         });
 
         const activeTab = document.getElementById(`tab-${tabId}`);
         if (activeTab) {
+            // Zobrazit sekci
             activeTab.classList.remove('hidden');
+
+            // Přerušení dávkového zpracování k vynucení synchronního přepočtu stylů
+            // Tím prohlížeč "zapomene", že sekce byla animovaná dříve
+            void activeTab.offsetWidth;
+
+            // Opětovné přidání animační třídy spustí klíčové snímky od začátku
+            activeTab.classList.add('animate-smooth-fade');
         }
 
+        // Aktualizace navigace
         document.querySelectorAll('.nav-link').forEach(link => {
             link.classList.remove('accent-text', 'border-b-2', 'accent-border', 'pb-1');
             link.classList.add('text-gray-600');
@@ -437,15 +464,13 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // --- 2. Dynamické Načítání Galerie (Frontend Hack) ---
+    // Načítání galerie
     function loadGalleryImages() {
         const container = document.getElementById('gallery-grid');
         let index = 1;
-        // Skript zkusí pro každé číslo různé přípony
         const extensions = ['.png', '.jpg', '.jpeg', '.webp'];
 
         function tryLoadImage(extIndex) {
-            // Pokud vyčerpáme přípony a obrázek se nenačetl, jsme na konci (nebo chybí soubor v řadě)
             if (extIndex >= extensions.length) {
                 if (index === 1) {
                     container.innerHTML = `
@@ -460,33 +485,28 @@
             const img = new Image();
             const ext = extensions[extIndex];
 
-            // Vytvoříme cestu, např.: gallery/photo1.png
             img.src = `gallery/photo${index}${ext}`;
             img.className = 'w-full h-full object-cover rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-[1.03] aspect-square cursor-pointer border border-[#F7E5F0]';
 
-            // Pokud se obrázek s danou příponou načte:
             img.onload = () => {
                 const wrapper = document.createElement('div');
                 wrapper.className = 'overflow-hidden rounded-2xl bg-white p-1.5 border border-[#F7E5F0]/50 shadow-sm';
                 wrapper.appendChild(img);
                 container.appendChild(wrapper);
 
-                // Zvýšíme index a zkusíme načíst další fotku (začneme zase od 1. přípony)
                 index++;
                 tryLoadImage(0);
             };
 
-            // Pokud obrázek s touto příponou neexistuje, zkusíme další příponu pro stejné číslo
             img.onerror = () => {
                 tryLoadImage(extIndex + 1);
             };
         }
 
-        // Spustíme rekurzi s photo1 a prvním formátem z pole extensions
         tryLoadImage(0);
     }
 
-    // --- Inicializace po načtení dokumentu ---
+    // Inicializace
     document.addEventListener('DOMContentLoaded', () => {
         switchTab('uvod');
         loadGalleryImages();
