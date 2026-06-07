@@ -75,8 +75,13 @@
             <button onclick="switchTab('kontakt')" class="nav-link cursor-pointer transition-colors duration-200 hover:text-[#A86A91]" id="nav-kontakt">Kontakt</button>
         </nav>
 
-        <div>
-            <a href="#" onclick="switchTab('kontakt')" class="accent-bg text-white text-xs font-semibold tracking-wider px-5 py-2.5 rounded hover:bg-[#C88FB0] transition-colors duration-300 shadow-sm uppercase">Rezervovat</a>
+        <div class="flex items-center space-x-4">
+            <a href="#" onclick="switchTab('kontakt')" class="hidden sm:inline-block accent-bg text-white text-xs font-semibold tracking-wider px-5 py-2.5 rounded hover:bg-[#C88FB0] transition-colors duration-300 shadow-sm uppercase">Rezervovat</a>
+            <button id="menu-btn" onclick="toggleSidebar(true)" class="md:hidden flex items-center justify-center p-2 rounded-lg text-gray-600 hover:text-[#A86A91] hover:bg-[#FCF4F8] transition-colors focus:outline-none cursor-pointer" aria-label="Menu">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
         </div>
     </div>
 </header>
@@ -440,6 +445,64 @@
     </div>
 </footer>
 
+<!-- Mobile Sidebar / Drawer -->
+<div id="mobile-sidebar-container" class="fixed inset-0 z-50 invisible transition-all duration-300" role="dialog" aria-modal="true">
+    <!-- Backdrop Overlay -->
+    <div id="sidebar-backdrop" onclick="toggleSidebar(false)" class="absolute inset-0 bg-gray-950/40 backdrop-blur-xs opacity-0 transition-opacity duration-300 ease-in-out"></div>
+    
+    <!-- Sidebar Panel -->
+    <div id="sidebar-panel" class="absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-[#FCFAFB] shadow-2xl border-l border-[#F7E5F0] flex flex-col translate-x-full transition-transform duration-300 ease-in-out">
+        <!-- Sidebar Header -->
+        <div class="p-6 flex items-center justify-between border-b border-[#F7E5F0] bg-white">
+            <span class="text-lg tracking-wide font-serif accent-text font-medium">Alessa Nails</span>
+            <button onclick="toggleSidebar(false)" class="p-2 -mr-2 rounded-full text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors focus:outline-none cursor-pointer" aria-label="Close menu">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Sidebar Navigation Links -->
+        <nav class="flex-grow p-6 space-y-3 overflow-y-auto">
+            <button onclick="switchTabFromSidebar('uvod')" id="sidebar-nav-uvod" class="sidebar-link w-full text-left px-4 py-3.5 rounded-xl text-sm font-medium tracking-wide flex items-center justify-between transition-all duration-200 cursor-pointer">
+                <span>Úvod</span>
+                <span class="text-xs opacity-60">→</span>
+            </button>
+            <button onclick="switchTabFromSidebar('cenik')" id="sidebar-nav-cenik" class="sidebar-link w-full text-left px-4 py-3.5 rounded-xl text-sm font-medium tracking-wide flex items-center justify-between transition-all duration-200 cursor-pointer">
+                <span>Ceník</span>
+                <span class="text-xs opacity-60">→</span>
+            </button>
+            <button onclick="switchTabFromSidebar('galerie')" id="sidebar-nav-galerie" class="sidebar-link w-full text-left px-4 py-3.5 rounded-xl text-sm font-medium tracking-wide flex items-center justify-between transition-all duration-200 cursor-pointer">
+                <span>Galerie</span>
+                <span class="text-xs opacity-60">→</span>
+            </button>
+            <button onclick="switchTabFromSidebar('kontakt')" id="sidebar-nav-kontakt" class="sidebar-link w-full text-left px-4 py-3.5 rounded-xl text-sm font-medium tracking-wide flex items-center justify-between transition-all duration-200 cursor-pointer">
+                <span>Kontakt</span>
+                <span class="text-xs opacity-60">→</span>
+            </button>
+
+            <!-- Reservation Button inside navigation list -->
+            <div class="pt-6 border-t border-[#F7E5F0] mt-6">
+                <button onclick="switchTabFromSidebar('kontakt')" class="w-full accent-bg text-white text-xs font-semibold tracking-wider py-3.5 rounded-xl hover:bg-[#C88FB0] transition-colors duration-300 shadow-md uppercase text-center cursor-pointer block">
+                    Rezervovat online
+                </button>
+            </div>
+        </nav>
+
+        <!-- Sidebar Footer -->
+        <div class="p-6 bg-white border-t border-[#F7E5F0] space-y-4">
+            <div class="flex items-center space-x-3 text-xs text-gray-500 font-light">
+                <span class="accent-text text-sm">📞</span>
+                <span>+420 774 584 984</span>
+            </div>
+            <div class="flex items-center space-x-3 text-xs text-gray-500 font-light">
+                <span class="accent-text text-sm">📍</span>
+                <span class="truncate">Starokolínská 2716, Praha 9</span>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     function switchTab(tabId) {
         // Skrýt všechny sekce a odebrat jim animační třídu pro reset
@@ -473,7 +536,56 @@
             activeLink.classList.remove('text-gray-600');
         }
 
+        // Aktualizace sidebar navigace
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.classList.remove('bg-[#FCF4F8]', 'accent-text', 'font-semibold', 'border-l-2', 'accent-border', 'pl-3');
+            link.classList.add('text-gray-600', 'pl-4');
+        });
+
+        const activeSidebarLink = document.getElementById(`sidebar-nav-${tabId}`);
+        if (activeSidebarLink) {
+            activeSidebarLink.classList.add('bg-[#FCF4F8]', 'accent-text', 'font-semibold', 'border-l-2', 'accent-border', 'pl-3');
+            activeSidebarLink.classList.remove('text-gray-600', 'pl-4');
+        }
+
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleSidebar(open) {
+        const container = document.getElementById('mobile-sidebar-container');
+        const backdrop = document.getElementById('sidebar-backdrop');
+        const panel = document.getElementById('sidebar-panel');
+        
+        if (open) {
+            document.body.classList.add('overflow-hidden');
+            container.classList.remove('invisible');
+            
+            // Trigger transition next tick
+            setTimeout(() => {
+                backdrop.classList.remove('opacity-0');
+                backdrop.classList.add('opacity-100');
+                
+                panel.classList.remove('translate-x-full');
+                panel.classList.add('translate-x-0');
+            }, 10);
+        } else {
+            document.body.classList.remove('overflow-hidden');
+            backdrop.classList.remove('opacity-100');
+            backdrop.classList.add('opacity-0');
+            
+            panel.classList.remove('translate-x-0');
+            panel.classList.add('translate-x-full');
+            
+            // Hide container after transition finishes (300ms)
+            setTimeout(() => {
+                container.classList.add('invisible');
+            }, 300);
+        }
+    }
+
+    function switchTabFromSidebar(tabId) {
+        switchTab(tabId);
+        toggleSidebar(false);
     }
 
     // Načítání galerie
