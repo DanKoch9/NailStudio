@@ -153,6 +153,7 @@
                         <li>Pedikúra</li>
                     </ul>
                     <p class="text-xs font-semibold accent-text mt-auto">2 roky praxe</p>
+                    <button onclick="switchTab('staff-katka')" class="mt-4 px-5 py-2.5 border border-[#DDA1C6] text-[#A86A91] hover:bg-[#DDA1C6] hover:text-white rounded-xl text-[11px] font-semibold tracking-wider uppercase transition-all duration-200 cursor-pointer shadow-xs">Moje práce</button>
                 </div>
 
                 <div class="bg-white border border-[#F7E5F0] p-6 rounded-3xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-shadow">
@@ -167,6 +168,7 @@
                         <li>Wellness pedikúra</li>
                     </ul>
                     <p class="text-xs font-semibold accent-text mt-auto">7 let praxe (6 UK / 1 ČR)</p>
+                    <button onclick="switchTab('staff-julie')" class="mt-4 px-5 py-2.5 border border-[#DDA1C6] text-[#A86A91] hover:bg-[#DDA1C6] hover:text-white rounded-xl text-[11px] font-semibold tracking-wider uppercase transition-all duration-200 cursor-pointer shadow-xs">Moje práce</button>
                 </div>
 
                 <div class="bg-white border border-[#F7E5F0] p-6 rounded-3xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-shadow">
@@ -180,8 +182,158 @@
                         <li>Obočí</li>
                     </ul>
                     <p class="text-xs font-semibold accent-text mt-auto">10 let praxe v oboru kosmetika</p>
+                    <button onclick="switchTab('staff-romana')" class="mt-4 px-5 py-2.5 border border-[#DDA1C6] text-[#A86A91] hover:bg-[#DDA1C6] hover:text-white rounded-xl text-[11px] font-semibold tracking-wider uppercase transition-all duration-200 cursor-pointer shadow-xs">Moje práce</button>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Detail staff-katka -->
+    <section id="tab-staff-katka" class="tab-content hidden">
+        <div class="max-w-4xl mx-auto px-4 py-12">
+            <button onclick="switchTab('uvod')" class="mb-8 flex items-center space-x-2 text-xs font-semibold tracking-wider text-[#A86A91] hover:text-[#C88FB0] transition-colors uppercase cursor-pointer">
+                <span>← Zpět na úvod</span>
+            </button>
+            
+            <div class="bg-white border border-[#F7E5F0] rounded-3xl p-8 shadow-sm mb-12 flex flex-col md:flex-row gap-8 items-center relative overflow-hidden">
+                <div class="absolute top-0 left-0 right-0 h-1 accent-bg opacity-70"></div>
+                <div class="w-32 h-32 rounded-full bg-[#FCF4F8] border border-[#F7E5F0] flex items-center justify-center shrink-0">
+                    <span class="text-xs text-[#DDA1C6] opacity-70">[ Katka ]</span>
+                </div>
+                <div class="space-y-4 text-center md:text-left">
+                    <span class="text-xs tracking-wider accent-text uppercase font-semibold">Junior Manikúra</span>
+                    <h1 class="text-4xl font-normal tracking-wide text-gray-800 font-serif">Katka</h1>
+                    <p class="text-gray-500 font-light text-sm leading-relaxed">
+                        Katka se připojila k našemu týmu s velkým nadšením a touhou tvořit krásné nehty. Specializuje se na precizní gel lak a klasickou manikúru. Dbá na maximální čistotu a precizní ošetření kůžiček, aby vaše ruce zářily zdravím.
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-normal text-gray-800 font-serif">Ukázky práce</h3>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Placeholders for Katka's work -->
+                <div class="relative group overflow-hidden rounded-2xl bg-gradient-to-br from-[#FCF4F8] to-[#EFCBE3]/30 border border-[#F7E5F0] aspect-square flex flex-col items-center justify-center p-4 transition-all duration-300 hover:shadow-md hover:scale-[1.02]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#A86A91]/40 mb-2 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span class="text-xs text-gray-500 font-light">Ukázka manikúry</span>
+                </div>
+                <div class="relative group overflow-hidden rounded-2xl bg-gradient-to-br from-[#FCF4F8] to-[#EFCBE3]/30 border border-[#F7E5F0] aspect-square flex flex-col items-center justify-center p-4 transition-all duration-300 hover:shadow-md hover:scale-[1.02]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#A86A91]/40 mb-2 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span class="text-xs text-gray-500 font-light">Detail nehtů</span>
+                </div>
+                <div class="relative group overflow-hidden rounded-2xl bg-gradient-to-br from-[#FCF4F8] to-[#EFCBE3]/30 border border-[#F7E5F0] aspect-square flex flex-col items-center justify-center p-4 transition-all duration-300 hover:shadow-md hover:scale-[1.02] col-span-2 md:col-span-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#A86A91]/40 mb-2 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span class="text-xs text-gray-500 font-light">Gel lak design</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detail staff-julie -->
+    <section id="tab-staff-julie" class="tab-content hidden">
+        <div class="max-w-4xl mx-auto px-4 py-12">
+            <button onclick="switchTab('uvod')" class="mb-8 flex items-center space-x-2 text-xs font-semibold tracking-wider text-[#A86A91] hover:text-[#C88FB0] transition-colors uppercase cursor-pointer">
+                <span>← Zpět na úvod</span>
+            </button>
+            
+            <div class="bg-white border border-[#F7E5F0] rounded-3xl p-8 shadow-sm mb-12 flex flex-col md:flex-row gap-8 items-center relative overflow-hidden">
+                <div class="absolute top-0 left-0 right-0 h-1 accent-bg opacity-70"></div>
+                <div class="w-32 h-32 rounded-full bg-[#FCF4F8] border border-[#F7E5F0] flex items-center justify-center shrink-0">
+                    <span class="text-xs text-[#DDA1C6] opacity-70">[ Jůlie ]</span>
+                </div>
+                <div class="space-y-4 text-center md:text-left">
+                    <span class="text-xs tracking-wider accent-text uppercase font-semibold">Kosmetička & Manikérka</span>
+                    <h1 class="text-4xl font-normal tracking-wide text-gray-800 font-serif">Jůlie</h1>
+                    <p class="text-gray-500 font-light text-sm leading-relaxed">
+                        Jůlie má bohaté mezinárodní zkušenosti – 6 let působila v salonech ve Velké Británii a 1 rok v České republice. Její specializací je precizní gelová modeláž nehtů a také luxusní wellness pedikúra, která přináší nohám i mysli dokonalé uvolnění a úlevu.
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-normal text-gray-800 font-serif">Ukázky práce</h3>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Placeholders for Julie's work -->
+                <div class="relative group overflow-hidden rounded-2xl bg-gradient-to-br from-[#FCF4F8] to-[#EFCBE3]/30 border border-[#F7E5F0] aspect-square flex flex-col items-center justify-center p-4 transition-all duration-300 hover:shadow-md hover:scale-[1.02]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#A86A91]/40 mb-2 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span class="text-xs text-gray-500 font-light">Gelová modeláž</span>
+                </div>
+                <div class="relative group overflow-hidden rounded-2xl bg-gradient-to-br from-[#FCF4F8] to-[#EFCBE3]/30 border border-[#F7E5F0] aspect-square flex flex-col items-center justify-center p-4 transition-all duration-300 hover:shadow-md hover:scale-[1.02]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#A86A91]/40 mb-2 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span class="text-xs text-gray-500 font-light">Wellness Pedikúra</span>
+                </div>
+                <div class="relative group overflow-hidden rounded-2xl bg-gradient-to-br from-[#FCF4F8] to-[#EFCBE3]/30 border border-[#F7E5F0] aspect-square flex flex-col items-center justify-center p-4 transition-all duration-300 hover:shadow-md hover:scale-[1.02] col-span-2 md:col-span-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#A86A91]/40 mb-2 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span class="text-xs text-gray-500 font-light">Francouzská manikúra</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detail staff-romana -->
+    <section id="tab-staff-romana" class="tab-content hidden">
+        <div class="max-w-4xl mx-auto px-4 py-12">
+            <button onclick="switchTab('uvod')" class="mb-8 flex items-center space-x-2 text-xs font-semibold tracking-wider text-[#A86A91] hover:text-[#C88FB0] transition-colors uppercase cursor-pointer">
+                <span>← Zpět na úvod</span>
+            </button>
+            
+            <div class="bg-white border border-[#F7E5F0] rounded-3xl p-8 shadow-sm mb-12 flex flex-col md:flex-row gap-8 items-center relative overflow-hidden">
+                <div class="absolute top-0 left-0 right-0 h-1 accent-bg opacity-70"></div>
+                <div class="w-32 h-32 rounded-full bg-[#FCF4F8] border border-[#F7E5F0] flex items-center justify-center shrink-0">
+                    <span class="text-xs text-[#DDA1C6] opacity-70">[ Romana ]</span>
+                </div>
+                <div class="space-y-4 text-center md:text-left">
+                    <span class="text-xs tracking-wider accent-text uppercase font-semibold">Kosmetika & Péče</span>
+                    <h1 class="text-4xl font-normal tracking-wide text-gray-800 font-serif">Romana</h1>
+                    <p class="text-gray-500 font-light text-sm leading-relaxed">
+                        Romana má 10 let praxe v oboru kosmetiky a péče o pleť. Je odbornicí na detailní úpravu a laminaci řas a obočí. Každé ošetření u ní je zážitkem na míru, doprovázeným uklidňující masáží obličeje a dekoltu.
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-normal text-gray-800 font-serif">Ukázky práce</h3>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Placeholders for Romana's work -->
+                <div class="relative group overflow-hidden rounded-2xl bg-gradient-to-br from-[#FCF4F8] to-[#EFCBE3]/30 border border-[#F7E5F0] aspect-square flex flex-col items-center justify-center p-4 transition-all duration-300 hover:shadow-md hover:scale-[1.02]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#A86A91]/40 mb-2 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span class="text-xs text-gray-500 font-light">Laminace řas</span>
+                </div>
+                <div class="relative group overflow-hidden rounded-2xl bg-gradient-to-br from-[#FCF4F8] to-[#EFCBE3]/30 border border-[#F7E5F0] aspect-square flex flex-col items-center justify-center p-4 transition-all duration-300 hover:shadow-md hover:scale-[1.02]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#A86A91]/40 mb-2 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span class="text-xs text-gray-500 font-light">Úprava a barvení obočí</span>
+                </div>
+                <div class="relative group overflow-hidden rounded-2xl bg-gradient-to-br from-[#FCF4F8] to-[#EFCBE3]/30 border border-[#F7E5F0] aspect-square flex flex-col items-center justify-center p-4 transition-all duration-300 hover:shadow-md hover:scale-[1.02] col-span-2 md:col-span-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#A86A91]/40 mb-2 group-hover:scale-110 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span class="text-xs text-gray-500 font-light">Péče o pleť</span>
+                </div>
+            </div>
+        </div>
+    </section>
         </div>
     </section>
 
@@ -194,100 +346,33 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start mb-12">
-
-                <div class="space-y-10">
-                    <div class="bg-white border border-[#F7E5F0] rounded-3xl p-8 shadow-sm space-y-6">
-                        <h2 class="text-2xl font-normal border-b border-[#F7E5F0] pb-3 tracking-wide text-gray-800 relative after:content-[''] after:block after:w-10 after:h-[2px] after:bg-[#DDA1C6] after:mt-3">Klasická Manikúra</h2>
-                        <div class="space-y-3.5 text-sm">
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Dámská / pánská / dětská</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">500 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Manikúra s výživou</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">550 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Manikúra s lakováním</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">600 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Maska na ruce</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">250 Kč</span></div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white border border-[#F7E5F0] rounded-3xl p-8 shadow-sm space-y-6">
-                        <h2 class="text-2xl font-normal border-b border-[#F7E5F0] pb-3 tracking-wide text-gray-800 relative after:content-[''] after:block after:w-10 after:h-[2px] after:bg-[#DDA1C6] after:mt-3">Modeláž & GelLak</h2>
-                        <div class="space-y-3.5 text-sm">
-                            <div class="flex items-end"><span class="font-medium text-gray-700">ShelLac manikúra (2 - 3 týdny)</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">650 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Stavební GelLak (3. týden)</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">750 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Stavební GelLak (4. týden)</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">800 Kč</span></div>
-
-                            <h4 class="font-medium text-[#A86A91] pt-3 pb-1 border-b border-[#F7E5F0]/50">Nová modelace</h4>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Nová nehtová modelace</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">1 100 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Nová nehtová modelace šablony</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">1 300 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Nový Babyboomer (krátké nehty)</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">1 250 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Kostka system - krátké nehty</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">1 200 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Kostka system - dlouhé nehty</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">1 500 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">2 NO Filing - dlouhé nehty</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">od 1 300 Kč</span></div>
-
-                            <h4 class="font-medium text-[#A86A91] pt-3 pb-1 border-b border-[#F7E5F0]/50">Doplnění</h4>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Doplnění 3. týden (krátké nehty)</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">od 850 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Doplnění 4. týden (krátké nehty)</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">od 950 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Doplnění 3. týden (dlouhé nehty)</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">od 900 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Doplnění 4. týden (dlouhé nehty)</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">od 1 000 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Doplnění Babyboomer</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">1 050 Kč</span></div>
-                            <p class="text-[11px] text-gray-400 italic pt-1">* Doplnění 5. týden a více - cena jako za nové</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <!-- Manikúra Ceník Card -->
+                <div class="bg-white border border-[#F7E5F0] rounded-3xl p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group cursor-pointer" onclick="openLightbox('cenik_manikura.jpeg', 'Ceník Manikúra')">
+                    <h2 class="text-2xl font-normal mb-4 pb-2 border-b border-[#F7E5F0] tracking-wide text-gray-800 relative after:content-[''] after:block after:w-10 after:h-[2px] after:bg-[#DDA1C6] after:mt-2">Ceník Manikúra</h2>
+                    <div class="overflow-hidden rounded-2xl relative bg-[#FCF4F8]/50 p-2 flex items-center justify-center">
+                        <img src="cenik_manikura.jpeg" alt="Ceník Manikúra" class="w-full h-auto rounded-xl shadow-sm transition-transform duration-500 group-hover:scale-[1.01]">
+                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-2xl">
+                            <span class="text-white text-xs font-semibold tracking-wider uppercase px-4 py-2 bg-[#A86A91]/90 rounded-full shadow-md backdrop-blur-xs flex items-center gap-1.5">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" /></svg>
+                                Zvětšit ceník
+                            </span>
                         </div>
                     </div>
                 </div>
 
-                <div class="space-y-10">
-                    <div class="bg-white border border-[#F7E5F0] rounded-3xl p-8 shadow-sm space-y-6">
-                        <h2 class="text-2xl font-normal border-b border-[#F7E5F0] pb-3 tracking-wide text-gray-800 relative after:content-[''] after:block after:w-10 after:h-[2px] after:bg-[#DDA1C6] after:mt-3">Pedikúra</h2>
-                        <div class="space-y-3.5 text-sm">
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Spa pedikúra</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">850 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Úprava nehtů samostatně</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">350 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Úprava nehtů + lak klasik</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">450 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Úprava nehtů + StripLac</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">550 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Úprava nehtů + Gel-lak</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">650 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Lakování klasik (k pedikúře)</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">100 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Lakování StripLac (krátké)</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">200 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Lakování Gel-lak (krátké)</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">300 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Ošetření zarostlých nehtů (tamponáda)</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">550 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Ošetření zarostlých nehtů (k pedikúře)</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">250 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Rovnátka (s ošetřením)</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">650 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Rovnátka (k pedikúře)</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">450 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Jednorázové žabky</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">80 Kč</span></div>
+                <!-- Pedikúra Ceník Card -->
+                <div class="bg-white border border-[#F7E5F0] rounded-3xl p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group cursor-pointer" onclick="openLightbox('cenik_pedikura.jpeg', 'Ceník Pedikúra')">
+                    <h2 class="text-2xl font-normal mb-4 pb-2 border-b border-[#F7E5F0] tracking-wide text-gray-800 relative after:content-[''] after:block after:w-10 after:h-[2px] after:bg-[#DDA1C6] after:mt-2">Ceník Pedikúra</h2>
+                    <div class="overflow-hidden rounded-2xl relative bg-[#FCF4F8]/50 p-2 flex items-center justify-center">
+                        <img src="cenik_pedikura.jpeg" alt="Ceník Pedikúra" class="w-full h-auto rounded-xl shadow-sm transition-transform duration-500 group-hover:scale-[1.01]">
+                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-2xl">
+                            <span class="text-white text-xs font-semibold tracking-wider uppercase px-4 py-2 bg-[#A86A91]/90 rounded-full shadow-md backdrop-blur-xs flex items-center gap-1.5">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" /></svg>
+                                Zvětšit ceník
+                            </span>
                         </div>
                     </div>
-
-                    <div class="bg-white border border-[#F7E5F0] rounded-3xl p-8 shadow-sm space-y-6">
-                        <h2 class="text-2xl font-normal border-b border-[#F7E5F0] pb-3 tracking-wide text-gray-800 relative after:content-[''] after:block after:w-10 after:h-[2px] after:bg-[#DDA1C6] after:mt-3">Řasy a Obočí</h2>
-                        <div class="space-y-3.5 text-sm">
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Řasa na řasu - nový set</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">1 300 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Objemové řasy - nový set</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">1 900 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Doplnění řas (2. týden)</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">od 450 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Doplnění řas (3. týden)</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">od 550 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Doplnění řas (4. týden)</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">od 650 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Laminace řas</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">1 190 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Barvení řas</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">120 Kč</span></div>
-
-                            <h4 class="font-medium text-[#A86A91] pt-3 pb-1 border-b border-[#F7E5F0]/50">Obočí</h4>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Laminace obočí</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">450 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Barva k laminaci</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">120 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Úprava a barvení obočí</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">120 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Micropigmentace obočí (Nové)</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">4 000 Kč</span></div>
-                            <div class="flex items-end"><span class="font-medium text-gray-700">Micropigmentace korekce (po měsíci)</span><div class="dotted-leader"></div><span class="font-semibold text-gray-800">1 000 Kč</span></div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white border border-[#F7E5F0] rounded-3xl p-8 shadow-sm space-y-6">
-                        <h2 class="text-2xl font-normal border-b border-[#F7E5F0] pb-3 tracking-wide text-gray-800 relative after:content-[''] after:block after:w-10 after:h-[2px] after:bg-[#DDA1C6] after:mt-3">Kosmetika</h2>
-                        <div class="space-y-3 text-sm">
-                            <div class="flex justify-between items-start">
-                                <div class="pr-6">
-                                    <span class="font-medium text-gray-700 block mb-1">Kosmetické ošetření pleti</span>
-                                    <span class="text-[11px] text-gray-400 font-light leading-relaxed">
-                                            ošetření pleti, úprava obočí, pealing, hloubkové čištění, ozónizér, masáž obličeje a dekoltu, maska, sérum, krém
-                                        </span>
-                                </div>
-                                <span class="font-semibold text-gray-800 whitespace-nowrap mt-1">1 050 Kč</span>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
 
@@ -635,6 +720,45 @@
         switchTab('uvod');
         loadGalleryImages();
     });
+</script>
+
+<!-- Lightbox Modal for pricing list images -->
+<div id="pricing-lightbox" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out" onclick="closeLightbox()">
+    <button class="absolute top-6 right-6 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer" onclick="closeLightbox(); event.stopPropagation();" aria-label="Zavřít">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+    </button>
+    <div class="max-w-[95vw] max-h-[95vh] flex flex-col items-center justify-center relative p-4" onclick="event.stopPropagation()">
+        <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl border border-white/10">
+        <h3 id="lightbox-title" class="text-white text-base font-normal font-serif tracking-wide mt-4"></h3>
+    </div>
+</div>
+
+<script>
+    function openLightbox(src, title) {
+        const lightbox = document.getElementById('pricing-lightbox');
+        const img = document.getElementById('lightbox-img');
+        const titleEl = document.getElementById('lightbox-title');
+        
+        img.src = src;
+        img.alt = title;
+        titleEl.textContent = title;
+        
+        document.body.classList.add('overflow-hidden');
+        lightbox.classList.remove('pointer-events-none');
+        lightbox.classList.remove('opacity-0');
+        lightbox.classList.add('opacity-100');
+    }
+
+    function closeLightbox() {
+        const lightbox = document.getElementById('pricing-lightbox');
+        
+        document.body.classList.remove('overflow-hidden');
+        lightbox.classList.add('pointer-events-none');
+        lightbox.classList.remove('opacity-100');
+        lightbox.classList.add('opacity-0');
+    }
 </script>
 </body>
 </html>
