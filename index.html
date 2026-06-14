@@ -107,11 +107,8 @@
                         Jsme nehtové studio v klidné části Prahy - Újezd nad Lesy, a zde působíme již od roku 2014. Naší prioritou je profesionální přístup, vzdělávání se v oboru a spokojené zákaznice.
                     </p>
                 </div>
-                <div class="bg-gray-50 rounded-3xl h-64 flex items-center justify-center border border-[#F7E5F0] shadow-sm group overflow-hidden relative">
-                    <div class="text-[#DDA1C6] text-sm font-medium flex flex-col items-center space-y-2 opacity-60">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 002-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                        <span>[ Placeholder: Foto studia ]</span>
-                    </div>
+                <div class="bg-gray-50 rounded-3xl h-64 overflow-hidden border border-[#F7E5F0] shadow-sm group relative">
+                    <img src="studio.jpeg" alt="Nail Studio" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                 </div>
             </div>
 
@@ -132,8 +129,8 @@
                         </li>
                     </ul>
                 </div>
-                <div class="w-40 h-40 rounded-full bg-white flex items-center justify-center border-4 border-[#F7E5F0] shadow-md shrink-0">
-                    <span class="text-xs text-[#DDA1C6] font-medium text-center p-2 opacity-70">[ Foto Pavla & Katka ]</span>
+                <div class="w-40 h-40 rounded-full overflow-hidden border-4 border-[#F7E5F0] shadow-md shrink-0">
+                    <img src="majitelky.jpeg" alt="Pavla & Katka" class="w-full h-full object-cover">
                 </div>
             </div>
 
@@ -673,46 +670,104 @@
         toggleSidebar(false);
     }
 
-    // Načítání galerie
+    // Načítání galerie (optimalizované pro paralelní načítání v dávkách a bezpečný lazy-loading)
     function loadGalleryImages() {
         const container = document.getElementById('gallery-grid');
-        let index = 1;
-        const extensions = ['.png', '.jpg', '.jpeg', '.webp'];
+        if (!container) return;
+        
+        const batchSize = 12; // Načítat po 12 snímcích v jedné paralelní dávce
+        const extensions = ['.webp', '.jpeg', '.jpg', '.png']; // Hledat WebP na prvním místě
+        
+        let currentStart = 1;
+        let consecutiveFailures = 0;
+        const maxConsecutiveFailures = 8; // Zastavit, pokud po sobě selže 8 snímků
+        let loadedCount = 0;
 
-        function tryLoadImage(extIndex) {
+        function loadBatch() {
+            const start = currentStart;
+            const end = currentStart + batchSize - 1;
+            let completedInBatch = 0;
+
+            // Vytvořit skryté placeholdery pro tuto dávku
+            for (let i = start; i <= end; i++) {
+                const placeholder = document.createElement('div');
+                placeholder.id = `gallery-item-${i}`;
+                placeholder.className = 'hidden overflow-hidden rounded-2xl bg-white p-1.5 border border-[#F7E5F0]/50 shadow-sm';
+                container.appendChild(placeholder);
+            }
+
+            // Spustit načítání obrázků v této dávce paralelně
+            for (let i = start; i <= end; i++) {
+                tryLoadImageForIndex(i, 0, () => {
+                    completedInBatch++;
+                    if (completedInBatch === batchSize) {
+                        currentStart += batchSize;
+                        
+                        // Pokud nemáme příliš mnoho po sobě jdoucích chyb, pokračujeme na další dávku
+                        if (consecutiveFailures < maxConsecutiveFailures) {
+                            loadBatch();
+                        } else {
+                            cleanUpFailedPlaceholders();
+                            checkEmptyGallery();
+                        }
+                    }
+                });
+            }
+        }
+
+        function tryLoadImageForIndex(index, extIndex, onComplete) {
             if (extIndex >= extensions.length) {
-                if (index === 1) {
-                    container.innerHTML = `
-                            <div class="col-span-full text-center py-10 space-y-2">
-                                <p class="text-[#A86A91] font-medium">Galerie je zatím prázdná.</p>
-                                <p class="text-gray-400 font-light text-sm">Vytvořte složku <strong>gallery</strong> na stejné úrovni jako tento soubor a nahrajte do ní fotky pojmenované jako <strong>photo1.png</strong>, <strong>photo2.jpg</strong> atd.</p>
-                            </div>`;
-                }
+                const placeholder = document.getElementById(`gallery-item-${index}`);
+                if (placeholder) placeholder.remove();
+                consecutiveFailures++;
+                onComplete();
                 return;
             }
 
-            const img = new Image();
             const ext = extensions[extIndex];
-
+            const img = new Image();
             img.src = `gallery/photo${index}${ext}`;
             img.className = 'w-full h-full object-cover rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-[1.03] aspect-square cursor-pointer border border-[#F7E5F0]';
 
             img.onload = () => {
-                const wrapper = document.createElement('div');
-                wrapper.className = 'overflow-hidden rounded-2xl bg-white p-1.5 border border-[#F7E5F0]/50 shadow-sm';
-                wrapper.appendChild(img);
-                container.appendChild(wrapper);
-
-                index++;
-                tryLoadImage(0);
+                const placeholder = document.getElementById(`gallery-item-${index}`);
+                if (placeholder) {
+                    img.onclick = () => openLightbox(img.src, `Galerie - Obrázek ${index}`);
+                    placeholder.appendChild(img);
+                    placeholder.classList.remove('hidden');
+                    loadedCount++;
+                    consecutiveFailures = 0; // Resetovat chyby při úspěšném načtení
+                }
+                onComplete();
             };
 
             img.onerror = () => {
-                tryLoadImage(extIndex + 1);
+                tryLoadImageForIndex(index, extIndex + 1, onComplete);
             };
         }
 
-        tryLoadImage(0);
+        function cleanUpFailedPlaceholders() {
+            const placeholders = container.querySelectorAll('[id^="gallery-item-"]');
+            placeholders.forEach(p => {
+                if (p.classList.contains('hidden')) {
+                    p.remove();
+                }
+            });
+        }
+
+        function checkEmptyGallery() {
+            const visibleItems = container.querySelectorAll('[id^="gallery-item-"]:not(.hidden)');
+            if (visibleItems.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-10 space-y-2">
+                        <p class="text-[#A86A91] font-medium">Galerie je zatím prázdná.</p>
+                        <p class="text-gray-400 font-light text-sm">Nahrajte obrázky do složky <strong>gallery</strong>.</p>
+                    </div>`;
+            }
+        }
+
+        // Spustit první dávku
+        loadBatch();
     }
 
     // Inicializace
