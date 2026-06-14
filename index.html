@@ -6,7 +6,7 @@
     <title>Alessa Nails Studio</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
@@ -30,15 +30,6 @@
         .hero-gradient {
             background: linear-gradient(135deg, #FDF4F9 0%, #EFCBE3 100%);
             opacity: 0.95;
-        }
-        .dotted-leader {
-            background-image: radial-gradient(circle, #F7E5F0 1px, transparent 1.5px);
-            background-position: bottom;
-            background-size: 1ex 1.5px;
-            background-repeat: repeat-x;
-            margin: 0 12px;
-            flex-grow: 1;
-            height: 1em;
         }
 
         /* --- VLASTNÍ CSS ANIMACE PRO PLYNULÝ PŘECHOD --- */
@@ -139,13 +130,14 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bg-white border border-[#F7E5F0] p-6 rounded-3xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-shadow">
-                    <div class="w-24 h-24 rounded-full bg-[#FCF4F8] mb-4 flex items-center justify-center border border-[#F7E5F0]">
-                        <span class="text-xs text-[#DDA1C6] opacity-70">[ Katka ]</span>
+                    <div class="w-24 h-24 rounded-full overflow-hidden mb-4 border border-[#F7E5F0] shadow-sm">
+                        <img src="katerina.webp" alt="Katka" class="w-full h-full object-cover">
                     </div>
-                    <h4 class="text-lg font-medium mb-3 text-gray-800">Katka</h4>
+                    <h4 class="text-lg font-medium mb-3 text-gray-800">Kateřina</h4>
                     <ul class="text-xs text-gray-500 space-y-1 font-light list-none mb-4">
-                        <li class="font-semibold text-gray-700">Junior Manikúra</li>
-                        <li>Gel lak</li>
+                        <li class="font-semibold text-gray-700">Manikúra & Pedikúra</li>
+                        <li>Manikúra</li>
+                        <li>Gelová modeláž</li>
                         <li>Nehtová modelace</li>
                         <li>Pedikúra</li>
                     </ul>
@@ -169,14 +161,17 @@
                 </div>
 
                 <div class="bg-white border border-[#F7E5F0] p-6 rounded-3xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-shadow">
-                    <div class="w-24 h-24 rounded-full bg-[#FCF4F8] mb-4 flex items-center justify-center border border-[#F7E5F0]">
-                        <span class="text-xs text-[#DDA1C6] opacity-70">[ Romana ]</span>
+                    <div class="w-24 h-24 rounded-full overflow-hidden mb-4 border border-[#F7E5F0] shadow-sm">
+                        <img src="romana.webp" alt="Romana" class="w-full h-full object-cover">
                     </div>
                     <h4 class="text-lg font-medium mb-3 text-gray-800">Romana</h4>
                     <ul class="text-xs text-gray-500 space-y-1 font-light list-none mb-4">
+                        <li class="font-semibold text-gray-700">Kosmetika & Permanentní make-up</li>
                         <li>Kosmetika</li>
-                        <li>Řasy</li>
-                        <li>Obočí</li>
+                        <li>Prodlužování řas</li>
+                        <li>Mezoterapie</li>
+                        <li>Permanentní make-up</li>
+                        <li>Piercing</li>
                     </ul>
                     <p class="text-xs font-semibold accent-text mt-auto">10 let praxe v oboru kosmetika</p>
                     <button onclick="switchTab('staff-romana')" class="mt-4 px-5 py-2.5 border border-[#DDA1C6] text-[#A86A91] hover:bg-[#DDA1C6] hover:text-white rounded-xl text-[11px] font-semibold tracking-wider uppercase transition-all duration-200 cursor-pointer shadow-xs">Moje práce</button>
@@ -194,14 +189,14 @@
             
             <div class="bg-white border border-[#F7E5F0] rounded-3xl p-8 shadow-sm mb-12 flex flex-col md:flex-row gap-8 items-center relative overflow-hidden">
                 <div class="absolute top-0 left-0 right-0 h-1 accent-bg opacity-70"></div>
-                <div class="w-32 h-32 rounded-full bg-[#FCF4F8] border border-[#F7E5F0] flex items-center justify-center shrink-0">
-                    <span class="text-xs text-[#DDA1C6] opacity-70">[ Katka ]</span>
+                <div class="w-32 h-32 rounded-full overflow-hidden border border-[#F7E5F0] shadow-md shrink-0">
+                    <img src="katerina.webp" alt="Katka" class="w-full h-full object-cover">
                 </div>
                 <div class="space-y-4 text-center md:text-left">
-                    <span class="text-xs tracking-wider accent-text uppercase font-semibold">Junior Manikúra</span>
-                    <h1 class="text-4xl font-normal tracking-wide text-gray-800 font-serif">Katka</h1>
+                    <span class="text-xs tracking-wider accent-text uppercase font-semibold">Manikúra & Pedikúra</span>
+                    <h1 class="text-4xl font-normal tracking-wide text-gray-800 font-serif">Kateřina</h1>
                     <p class="text-gray-500 font-light text-sm leading-relaxed">
-                        Katka se připojila k našemu týmu s velkým nadšením a touhou tvořit krásné nehty. Specializuje se na precizní gel lak a klasickou manikúru. Dbá na maximální čistotu a precizní ošetření kůžiček, aby vaše ruce zářily zdravím.
+                        Kateřina nabízí profesionální péči o vaše ruce a nohy. Specializuje se na manikúru, gelovou modeláž, nehtovou modelaci a pedikúru. Dbá na precizní ošetření a maximální čistotu, aby vaše nehty byly zdravé a krásné.
                     </p>
                 </div>
             </div>
@@ -292,14 +287,14 @@
             
             <div class="bg-white border border-[#F7E5F0] rounded-3xl p-8 shadow-sm mb-12 flex flex-col md:flex-row gap-8 items-center relative overflow-hidden">
                 <div class="absolute top-0 left-0 right-0 h-1 accent-bg opacity-70"></div>
-                <div class="w-32 h-32 rounded-full bg-[#FCF4F8] border border-[#F7E5F0] flex items-center justify-center shrink-0">
-                    <span class="text-xs text-[#DDA1C6] opacity-70">[ Romana ]</span>
+                <div class="w-32 h-32 rounded-full overflow-hidden border border-[#F7E5F0] shadow-md shrink-0">
+                    <img src="romana.webp" alt="Romana" class="w-full h-full object-cover">
                 </div>
                 <div class="space-y-4 text-center md:text-left">
-                    <span class="text-xs tracking-wider accent-text uppercase font-semibold">Kosmetika & Péče</span>
+                    <span class="text-xs tracking-wider accent-text uppercase font-semibold">Kosmetika, permanentní make-up & piercing</span>
                     <h1 class="text-4xl font-normal tracking-wide text-gray-800 font-serif">Romana</h1>
                     <p class="text-gray-500 font-light text-sm leading-relaxed">
-                        Romana má 10 let praxe v oboru kosmetiky a péče o pleť. Je odbornicí na detailní úpravu a laminaci řas a obočí. Každé ošetření u ní je zážitkem na míru, doprovázeným uklidňující masáží obličeje a dekoltu.
+                        Romana se specializuje na komplexní péči o pleť a tělo. Nabízí profesionální služby v oborech: kosmetika, prodlužování řas, mezoterapie, permanentní make-up a piercing. Její prioritou je individuální přístup a špičková kvalita ošetření.
                     </p>
                 </div>
             </div>
@@ -331,8 +326,7 @@
             </div>
         </div>
     </section>
-        </div>
-    </section>
+
 
     <section id="tab-cenik" class="tab-content hidden">
         <div class="max-w-6xl mx-auto px-4 py-12">
@@ -474,24 +468,24 @@
                 <div class="md:col-span-7 bg-white border border-[#F7E5F0] rounded-3xl p-8 shadow-sm relative overflow-hidden">
                     <div class="absolute top-0 left-0 right-0 h-1 accent-bg opacity-70"></div>
                     <h3 class="text-lg font-medium text-gray-800 mb-6">Napište nám</h3>
-                    <form class="space-y-5" onsubmit="event.preventDefault();">
+                    <form id="contact-form" class="space-y-5">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div class="space-y-1.5">
-                                <label class="text-xs font-semibold text-[#A86A91] uppercase tracking-wider">Jméno a příjmení</label>
-                                <input type="text" placeholder="Vaše jméno" class="w-full text-sm font-light px-4 py-3 rounded-xl border border-[#F7E5F0] bg-[#FCF4F8]/50 focus:outline-none focus:border-[#DDA1C6] focus:bg-white transition-all shadow-inner">
+                                <label for="form-name" class="text-xs font-semibold text-[#A86A91] uppercase tracking-wider">Jméno a příjmení</label>
+                                <input id="form-name" type="text" placeholder="Vaše jméno" class="w-full text-sm font-light px-4 py-3 rounded-xl border border-[#F7E5F0] bg-[#FCF4F8]/50 focus:outline-none focus:border-[#DDA1C6] focus:bg-white transition-all shadow-inner">
                             </div>
                             <div class="space-y-1.5">
-                                <label class="text-xs font-semibold text-[#A86A91] uppercase tracking-wider">E-mail</label>
-                                <input type="email" placeholder="vas@email.cz" class="w-full text-sm font-light px-4 py-3 rounded-xl border border-[#F7E5F0] bg-[#FCF4F8]/50 focus:outline-none focus:border-[#DDA1C6] focus:bg-white transition-all shadow-inner">
+                                <label for="form-email" class="text-xs font-semibold text-[#A86A91] uppercase tracking-wider">E-mail</label>
+                                <input id="form-email" type="email" placeholder="vas@email.cz" class="w-full text-sm font-light px-4 py-3 rounded-xl border border-[#F7E5F0] bg-[#FCF4F8]/50 focus:outline-none focus:border-[#DDA1C6] focus:bg-white transition-all shadow-inner">
                             </div>
                         </div>
                         <div class="space-y-1.5">
-                            <label class="text-xs font-semibold text-[#A86A91] uppercase tracking-wider">Telefon</label>
-                            <input type="tel" placeholder="+420 123 456 789" class="w-full text-sm font-light px-4 py-3 rounded-xl border border-[#F7E5F0] bg-[#FCF4F8]/50 focus:outline-none focus:border-[#DDA1C6] focus:bg-white transition-all shadow-inner">
+                            <label for="form-phone" class="text-xs font-semibold text-[#A86A91] uppercase tracking-wider">Telefon</label>
+                            <input id="form-phone" type="tel" placeholder="+420 123 456 789" class="w-full text-sm font-light px-4 py-3 rounded-xl border border-[#F7E5F0] bg-[#FCF4F8]/50 focus:outline-none focus:border-[#DDA1C6] focus:bg-white transition-all shadow-inner">
                         </div>
                         <div class="space-y-1.5">
-                            <label class="text-xs font-semibold text-[#A86A91] uppercase tracking-wider">Vaše zpráva</label>
-                            <textarea rows="4" placeholder="Jak vám můžeme pomoci?" class="w-full text-sm font-light px-4 py-3 rounded-xl border border-[#F7E5F0] bg-[#FCF4F8]/50 focus:outline-none focus:border-[#DDA1C6] focus:bg-white transition-all resize-none shadow-inner"></textarea>
+                            <label for="form-message" class="text-xs font-semibold text-[#A86A91] uppercase tracking-wider">Vaše zpráva</label>
+                            <textarea id="form-message" rows="4" placeholder="Jak vám můžeme pomoci?" class="w-full text-sm font-light px-4 py-3 rounded-xl border border-[#F7E5F0] bg-[#FCF4F8]/50 focus:outline-none focus:border-[#DDA1C6] focus:bg-white transition-all resize-none shadow-inner"></textarea>
                         </div>
                         <button type="submit" class="accent-bg text-white text-xs font-semibold tracking-wider px-6 py-3 rounded-xl hover:bg-[#C88FB0] transition-colors shadow-sm w-full sm:w-auto uppercase cursor-pointer">Odeslat zprávu ▷</button>
                     </form>
@@ -770,21 +764,53 @@
         loadBatch();
     }
 
-    // Inicializace
+    // Inicializace a obsluha událostí (odstranění zastaralých inline event.stopPropagation a event.preventDefault)
     document.addEventListener('DOMContentLoaded', () => {
         switchTab('uvod');
         loadGalleryImages();
+
+        // Obsluha odeslání kontaktního formuláře
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+            });
+        }
+
+        // Obsluha Lightboxu
+        const lightbox = document.getElementById('pricing-lightbox');
+        const closeBtn = document.getElementById('lightbox-close-btn');
+        const contentArea = document.getElementById('lightbox-content');
+
+        if (lightbox) {
+            lightbox.addEventListener('click', () => {
+                closeLightbox();
+            });
+        }
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeLightbox();
+            });
+        }
+
+        if (contentArea) {
+            contentArea.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+        }
     });
 </script>
 
 <!-- Lightbox Modal for pricing list images -->
-<div id="pricing-lightbox" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out" onclick="closeLightbox()">
-    <button class="absolute top-6 right-6 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer" onclick="closeLightbox(); event.stopPropagation();" aria-label="Zavřít">
+<div id="pricing-lightbox" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out">
+    <button id="lightbox-close-btn" class="absolute top-6 right-6 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer" aria-label="Zavřít">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
     </button>
-    <div class="max-w-[95vw] max-h-[95vh] flex flex-col items-center justify-center relative p-4" onclick="event.stopPropagation()">
+    <div id="lightbox-content" class="max-w-[95vw] max-h-[95vh] flex flex-col items-center justify-center relative p-4">
         <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl border border-white/10">
         <h3 id="lightbox-title" class="text-white text-base font-normal font-serif tracking-wide mt-4"></h3>
     </div>
