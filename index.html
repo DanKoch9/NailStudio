@@ -52,6 +52,21 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between antialiased">
 
+<!-- Speciální nabídka (Banner) - Zde můžete změnit text akce -->
+<div id="promo-banner" class="bg-[#A86A91] text-white text-xs md:text-sm py-2.5 px-4 transition-all duration-300 relative z-50">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+        <div class="flex-grow flex items-center justify-center flex-wrap gap-2 text-center font-medium tracking-wide">
+            <span class="inline-flex items-center bg-white/20 px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider">Akce</span>
+            <span>Speciální nabídka: Připravujeme pro vás nové letní slevy a procedury! Sledujte náš web.</span>
+        </div>
+        <button onclick="dismissBanner()" class="ml-4 text-white/80 hover:text-white transition-colors p-1 cursor-pointer shrink-0" aria-label="Zavřít">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+    </div>
+</div>
+
 <header class="bg-white/85 backdrop-blur-md sticky top-0 z-50 border-b border-[#F7E5F0]">
     <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
         <a href="#" onclick="switchTab('uvod')" class="flex items-center space-x-2">
@@ -840,6 +855,23 @@
         lightbox.classList.remove('opacity-100');
         lightbox.classList.add('opacity-0');
     }
+
+    // Obsluha a zavírání akčního banneru
+    function dismissBanner() {
+        const banner = document.getElementById('promo-banner');
+        if (banner) {
+            banner.classList.add('hidden');
+            localStorage.setItem('promo-banner-dismissed', 'true');
+        }
+    }
+
+    // Inicializace banneru při načtení stránky
+    document.addEventListener('DOMContentLoaded', () => {
+        const banner = document.getElementById('promo-banner');
+        if (banner && localStorage.getItem('promo-banner-dismissed') === 'true') {
+            banner.classList.add('hidden');
+        }
+    });
 </script>
 </body>
 </html>
