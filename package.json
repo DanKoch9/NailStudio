@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.html",
   "scripts": {
+    "manifest": "node update-manifest.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "private": true
