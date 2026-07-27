@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #FCFAFB;
+    color: #4A4047;
+}
+h1, h2, h3, .font-serif {
+    font-family: 'Playfair Display', serif;
+}
+.accent-bg {
+    background-color: #DDA1C6;
+}
+.accent-text {
+    color: #A86A91;
+}
+.accent-border {
+    border-color: #DDA1C6;
+}
+.hero-gradient {
+    background: linear-gradient(135deg, #FDF4F9 0%, #EFCBE3 100%);
+    opacity: 0.95;
+}
+
+/* --- VLASTNÍ CSS ANIMACE PRO PLYNULÝ PŘECHOD --- */
+@keyframes smoothFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-smooth-fade {
+    animation: smoothFadeIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
