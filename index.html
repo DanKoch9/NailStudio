@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alessa Nails Studio</title>
+    <meta name="description" content="Alessa Nails Studio - Profesionální nehtové studio v Újezdě nad Lesy, Praha 9. Nabízíme manikúru, pedikúru, gelovou modeláž, nehtová rovnátka a kosmetické služby.">
     <link rel="icon" type="image/x-icon" href="logo.ico">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,6 +54,9 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between antialiased">
 
+<!-- Skip to main content link for screen reader and keyboard accessibility -->
+<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-white focus:text-[#A86A91] focus:rounded-lg focus:shadow-md focus:outline-none">Přejít k hlavnímu obsahu</a>
+
 <!-- Speciální nabídka (Banner) - Zde můžete změnit text akce -->
 <div id="promo-banner" class="bg-[#A86A91] text-white text-xs md:text-sm py-2.5 px-4 transition-all duration-300 relative z-50">
     <div class="max-w-6xl mx-auto flex items-center justify-between">
@@ -60,8 +64,8 @@
             <span class="inline-flex items-center bg-white/20 px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider">Akce</span>
             <span>Speciální nabídka: Připravujeme pro vás nové letní slevy a procedury! Sledujte náš web.</span>
         </div>
-        <button onclick="dismissBanner()" class="ml-4 text-white/80 hover:text-white transition-colors p-1 cursor-pointer shrink-0" aria-label="Zavřít">
-            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <button onclick="dismissBanner()" class="ml-4 text-white/80 hover:text-white transition-colors p-1 cursor-pointer shrink-0" aria-label="Zavřít oznámení">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
         </button>
@@ -71,11 +75,11 @@
 <header class="bg-white/85 backdrop-blur-md sticky top-0 z-50 border-b border-[#F7E5F0]">
     <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
         <a href="#" onclick="switchTab('uvod')" class="flex items-center space-x-2">
-            <img src="logo.png" alt="Alessa Nails Studio" class="h-12 w-auto object-contain fallback-logo" onerror="this.style.display='none'; document.getElementById('logo-text').style.display='block'">
+            <img src="logo.png" alt="Alessa Nails Studio logo" class="h-12 w-auto object-contain fallback-logo" onerror="this.style.display='none'; document.getElementById('logo-text').style.display='block'">
             <span id="logo-text" class="text-xl tracking-wide font-serif accent-text hidden">Alessa Nails Studio</span>
         </a>
 
-        <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wide">
+        <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wide" aria-label="Hlavní navigace">
             <button onclick="switchTab('uvod')" class="nav-link cursor-pointer transition-colors duration-200 hover:text-[#A86A91]" id="nav-uvod">Úvod</button>
             <button onclick="switchTab('cenik')" class="nav-link cursor-pointer transition-colors duration-200 hover:text-[#A86A91]" id="nav-cenik">Ceník</button>
             <button onclick="switchTab('galerie')" class="nav-link cursor-pointer transition-colors duration-200 hover:text-[#A86A91]" id="nav-galerie">Galerie</button>
@@ -84,8 +88,8 @@
 
         <div class="flex items-center space-x-4">
             <a href="#" onclick="switchTab('kontakt')" class="hidden sm:inline-block accent-bg text-white text-xs font-semibold tracking-wider px-5 py-2.5 rounded hover:bg-[#C88FB0] transition-colors duration-300 shadow-sm uppercase">Rezervovat</a>
-            <button id="menu-btn" onclick="toggleSidebar(true)" class="md:hidden flex items-center justify-center p-2 rounded-lg text-gray-600 hover:text-[#A86A91] hover:bg-[#FCF4F8] transition-colors focus:outline-none cursor-pointer" aria-label="Menu">
-                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <button id="menu-btn" onclick="toggleSidebar(true)" class="md:hidden flex items-center justify-center p-2 rounded-lg text-gray-600 hover:text-[#A86A91] hover:bg-[#FCF4F8] transition-colors focus:outline-none cursor-pointer" aria-label="Otevřít menu" aria-expanded="false" aria-controls="mobile-sidebar-container">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
             </button>
