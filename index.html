@@ -22,16 +22,19 @@
     <meta property="og:image" content="o_nas.webp">
     <meta property="og:locale" content="cs_CZ">
 
-    <!-- Schema.org JSON-LD Structured Data for Local Business (Google Maps & Search Ranking) -->
-    <script type="application/ld+json"> 
+    <!-- Schema.org JSON-LD Structured Data for BeautySalon & Local Business (Google Maps & Search Ranking) -->
+    <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "NailSalon",
+      "@type": ["BeautySalon", "NailSalon"],
       "name": "Alessa Nails Studio",
-      "image": "logo.png",
+      "url": "https://alessanails.cz",
+      "logo": "logo.png",
+      "image": "o_nas.webp",
       "description": "Profesionální nehtové studio v Újezdě nad Lesy, Praha 9. Manikúra, pedikúra, gelová modeláž, podologická rovnátka a kosmetické služby.",
       "telephone": "+420774584984",
       "email": "alessa.nails.studio@gmail.com",
+      "priceRange": "€€",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Starokolínská 27/16",
@@ -52,7 +55,78 @@
           "closes": "20:00"
         }
       ],
-      "priceRange": "€€"
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Služby Alessa Nails Studio",
+        "itemListElement": [
+          {
+            "@type": "OfferCatalog",
+            "name": "Manikúra",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Přístrojová & Klasická Manikúra",
+                  "description": "Profesionální péče o nehty a kůžičku"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Gel lak & Gelová modeláž",
+                  "description": "Šetrné zpevnění a modelace nehtů"
+                }
+              }
+            ]
+          },
+          {
+            "@type": "OfferCatalog",
+            "name": "Pedikúra & Podologie",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Mediciální a estetická pedikúra",
+                  "description": "Komplexní péče o chodidla a nehty"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Nehtová rovnátka (Podologie)",
+                  "description": "Korekce zarůstajících nehtů pomocí rovnátek"
+                }
+              }
+            ]
+          },
+          {
+            "@type": "OfferCatalog",
+            "name": "Kosmetika & Estetika",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Kosmetické ošetření pleti a mezoterapie",
+                  "description": "Hloubkové ošetření a regenerace pleti"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Permanentní make-up & Piercing",
+                  "description": "Zvýraznění kontur obličeje a aplikace piercingu"
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
     </script>
 
@@ -64,12 +138,12 @@
 <body class="min-h-screen flex flex-col justify-between antialiased">
 
 <!-- Skip to main content link for screen reader and keyboard accessibility -->
-<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-white focus:text-[#A86A91] focus:rounded-lg focus:shadow-md focus:outline-none">Přejít k hlavnímu obsahu</a>
+<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-100 focus:px-4 focus:py-2 focus:bg-white focus:text-[#A86A91] focus:rounded-lg focus:shadow-md focus:outline-none">Přejít k hlavnímu obsahu</a>
 
 <!-- Speciální nabídka (Banner) - Zde můžete změnit text akce -->
 <div id="promo-banner" class="bg-[#A86A91] text-white text-xs md:text-sm py-2.5 px-4 transition-all duration-300 relative z-50">
     <div class="max-w-6xl mx-auto flex items-center justify-between">
-        <div class="flex-grow flex items-center justify-center flex-wrap gap-2 text-center font-medium tracking-wide">
+        <div class="grow flex items-center justify-center flex-wrap gap-2 text-center font-medium tracking-wide">
             <span class="inline-flex items-center bg-white/20 px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider">Akce</span>
             <span>Speciální nabídka: Připravujeme pro vás nové letní slevy a procedury! Sledujte náš web.</span>
         </div>
@@ -84,7 +158,7 @@
 <header class="bg-white/85 backdrop-blur-md sticky top-0 z-50 border-b border-[#F7E5F0]">
     <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
         <a href="#" onclick="switchTab('uvod')" class="flex items-center space-x-2">
-            <img src="logo.png" alt="Alessa Nails Studio logo" class="h-12 w-auto object-contain fallback-logo" onerror="this.style.display='none'; document.getElementById('logo-text').style.display='block'">
+            <img src="logo.png" alt="Alessa Nails Studio logo" class="h-12 w-auto object-contain fallback-logo">
             <span id="logo-text" class="text-xl tracking-wide font-serif accent-text hidden">Alessa Nails Studio</span>
         </a>
 
@@ -106,10 +180,10 @@
     </div>
 </header>
 
-<main id="main-content" class="flex-grow">
+<main id="main-content" class="grow">
 
     <section id="tab-uvod" class="tab-content hidden">
-        <div class="relative h-[400px] w-full overflow-hidden flex items-center justify-center hero-gradient border-b border-[#F7E5F0]">
+        <div class="relative h-100 w-full overflow-hidden flex items-center justify-center hero-gradient border-b border-[#F7E5F0]">
             <div class="absolute inset-0 bg-white/20 backdrop-blur-[1px]"></div>
             <div class="relative text-center z-10 p-6 flex flex-col items-center">
                 <div class="w-32 h-32 rounded-full bg-white shadow-xl flex items-center justify-center p-1 mb-6 border border-[#F7E5F0]">
@@ -122,35 +196,41 @@
         <div class="max-w-5xl mx-auto px-4 py-16">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
                 <div>
-                    <h2 class="text-3xl font-normal mb-6 tracking-wide relative after:content-[''] after:block after:w-12 after:h-[2px] after:bg-[#DDA1C6] after:mt-4">O nás</h2>
+                    <h2 class="text-3xl font-normal mb-6 tracking-wide relative after:content-[''] after:block after:w-12 after:h-0.5 after:bg-[#DDA1C6] after:mt-4">O nás</h2>
                     <p class="text-gray-600 leading-relaxed font-light text-base">
                         Jsme nehtové studio v klidné části Prahy - Újezd nad Lesy, a zde působíme již od roku 2014. Naší prioritou je profesionální přístup, vzdělávání se v oboru a spokojené zákaznice.
                     </p>
                 </div>
                 <div class="bg-gray-50 rounded-3xl h-64 overflow-hidden border border-[#F7E5F0] shadow-sm group relative">
-                    <img src="o_nas.webp" alt="Interiér Alessa Nails Studio" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    <picture>
+                        <source srcset="o_nas.webp" type="image/webp">
+                        <img src="o_nas.webp" alt="Interiér Alessa Nails Studio" loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    </picture>
                 </div>
             </div>
 
             <div class="bg-[#FCF4F8] rounded-3xl p-8 md:p-12 border border-[#F7E5F0] flex flex-col md:flex-row gap-8 items-center mb-24 shadow-sm">
-                <div class="flex-grow space-y-6">
+                <div class="grow space-y-6">
                     <div>
                         <h3 class="text-2xl font-normal mb-1 text-gray-800">Pavla & Katka</h3>
                         <p class="text-sm tracking-wider accent-text uppercase font-semibold">Majitelky salonu</p>
                     </div>
                     <ul class="space-y-4 text-sm text-gray-600 font-light">
                         <li class="flex items-start gap-3">
-                            <span class="accent-text text-lg mt-[-2px]">•</span>
+                            <span class="accent-text text-lg -mt-0.5">•</span>
                             <div><strong>Pavla:</strong> 23 let praxe v oboru kosmetika a nehtová modeláž.</div>
                         </li>
                         <li class="flex items-start gap-3">
-                            <span class="accent-text text-lg mt-[-2px]">•</span>
+                            <span class="accent-text text-lg -mt-0.5">•</span>
                             <div><strong>Katka:</strong> 16 let praxe v oboru pedikúra, podologická rovnátka, manikúra a gel lak.</div>
                         </li>
                     </ul>
                 </div>
                 <div class="w-40 h-40 rounded-full overflow-hidden border-4 border-[#F7E5F0] shadow-md shrink-0">
-                    <img src="majitelky.webp" alt="Pavla & Katka" class="w-full h-full object-cover">
+                    <picture>
+                        <source srcset="majitelky.webp" type="image/webp">
+                        <img src="majitelky.webp" alt="Pavla & Katka" loading="lazy" decoding="async" class="w-full h-full object-cover">
+                    </picture>
                 </div>
             </div>
 
@@ -160,7 +240,10 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="bg-white border border-[#F7E5F0] p-6 rounded-3xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-shadow">
                     <div class="w-24 h-24 rounded-full overflow-hidden mb-4 border border-[#F7E5F0] shadow-sm">
-                        <img src="pavla.webp" alt="Pavla" class="w-full h-full object-cover">
+                        <picture>
+                            <source srcset="pavla.webp" type="image/webp">
+                            <img src="pavla.webp" alt="Pavla" loading="lazy" decoding="async" class="w-full h-full object-cover">
+                        </picture>
                     </div>
                     <h4 class="text-lg font-medium mb-1 text-gray-800">Pavla</h4>
                     <p class="text-xs text-[#A86A91] font-semibold mb-3">Spolumajitelka</p>
@@ -175,7 +258,10 @@
 
                 <div class="bg-white border border-[#F7E5F0] p-6 rounded-3xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-shadow">
                     <div class="w-24 h-24 rounded-full overflow-hidden mb-4 border border-[#F7E5F0] shadow-sm">
-                        <img src="katka.webp" alt="Katka" class="w-full h-full object-cover">
+                        <picture>
+                            <source srcset="katka.webp" type="image/webp">
+                            <img src="katka.webp" alt="Katka" loading="lazy" decoding="async" class="w-full h-full object-cover">
+                        </picture>
                     </div>
                     <h4 class="text-lg font-medium mb-1 text-gray-800">Katka</h4>
                     <p class="text-xs text-[#A86A91] font-semibold mb-3">Spolumajitelka</p>
@@ -192,7 +278,10 @@
 
                 <div class="bg-white border border-[#F7E5F0] p-6 rounded-3xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-shadow">
                     <div class="w-24 h-24 rounded-full overflow-hidden mb-4 border border-[#F7E5F0] shadow-sm">
-                        <img src="katerina.webp" alt="Kateřina" class="w-full h-full object-cover">
+                        <picture>
+                            <source srcset="katerina.webp" type="image/webp">
+                            <img src="katerina.webp" alt="Kateřina" loading="lazy" decoding="async" class="w-full h-full object-cover">
+                        </picture>
                     </div>
                     <h4 class="text-lg font-medium mb-3 text-gray-800">Kateřina</h4>
                     <ul class="text-xs text-gray-500 space-y-1 font-light list-none mb-4">
@@ -208,7 +297,10 @@
 
                 <div class="bg-white border border-[#F7E5F0] p-6 rounded-3xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-shadow">
                     <div class="w-24 h-24 rounded-full overflow-hidden mb-4 border border-[#F7E5F0] shadow-sm">
-                        <img src="romana.webp" alt="Romana" class="w-full h-full object-cover">
+                        <picture>
+                            <source srcset="romana.webp" type="image/webp">
+                            <img src="romana.webp" alt="Romana" loading="lazy" decoding="async" class="w-full h-full object-cover">
+                        </picture>
                     </div>
                     <h4 class="text-lg font-medium mb-3 text-gray-800">Romana</h4>
                     <ul class="text-xs text-gray-500 space-y-1 font-light list-none mb-4">
@@ -236,7 +328,10 @@
             <div class="bg-white border border-[#F7E5F0] rounded-3xl p-8 shadow-sm mb-12 flex flex-col md:flex-row gap-8 items-center relative overflow-hidden">
                 <div class="absolute top-0 left-0 right-0 h-1 accent-bg opacity-70"></div>
                 <div class="w-32 h-32 rounded-full overflow-hidden border border-[#F7E5F0] shadow-md shrink-0">
-                    <img src="katka.webp" alt="Katka" class="w-full h-full object-cover">
+                    <picture>
+                        <source srcset="katka.webp" type="image/webp">
+                        <img src="katka.webp" alt="Katka" loading="lazy" decoding="async" class="w-full h-full object-cover">
+                    </picture>
                 </div>
                 <div class="space-y-4 text-center md:text-left">
                     <span class="text-xs tracking-wider accent-text uppercase font-semibold">Spolumajitelka | Pedikúra & Manikúra</span>
@@ -267,7 +362,10 @@
             <div class="bg-white border border-[#F7E5F0] rounded-3xl p-8 shadow-sm mb-12 flex flex-col md:flex-row gap-8 items-center relative overflow-hidden">
                 <div class="absolute top-0 left-0 right-0 h-1 accent-bg opacity-70"></div>
                 <div class="w-32 h-32 rounded-full overflow-hidden border border-[#F7E5F0] shadow-md shrink-0">
-                    <img src="katerina.webp" alt="Kateřina" class="w-full h-full object-cover">
+                    <picture>
+                        <source srcset="katerina.webp" type="image/webp">
+                        <img src="katerina.webp" alt="Kateřina" loading="lazy" decoding="async" class="w-full h-full object-cover">
+                    </picture>
                 </div>
                 <div class="space-y-4 text-center md:text-left">
                     <span class="text-xs tracking-wider accent-text uppercase font-semibold">Manikúra & Pedikúra</span>
@@ -298,7 +396,10 @@
             <div class="bg-white border border-[#F7E5F0] rounded-3xl p-8 shadow-sm mb-12 flex flex-col md:flex-row gap-8 items-center relative overflow-hidden">
                 <div class="absolute top-0 left-0 right-0 h-1 accent-bg opacity-70"></div>
                 <div class="w-32 h-32 rounded-full overflow-hidden border border-[#F7E5F0] shadow-md shrink-0">
-                    <img src="pavla.webp" alt="Pavla" class="w-full h-full object-cover">
+                    <picture>
+                        <source srcset="pavla.webp" type="image/webp">
+                        <img src="pavla.webp" alt="Pavla" loading="lazy" decoding="async" class="w-full h-full object-cover">
+                    </picture>
                 </div>
                 <div class="space-y-4 text-center md:text-left">
                     <span class="text-xs tracking-wider accent-text uppercase font-semibold">Kosmetička & Majitelka salonu</span>
@@ -329,7 +430,10 @@
             <div class="bg-white border border-[#F7E5F0] rounded-3xl p-8 shadow-sm mb-12 flex flex-col md:flex-row gap-8 items-center relative overflow-hidden">
                 <div class="absolute top-0 left-0 right-0 h-1 accent-bg opacity-70"></div>
                 <div class="w-32 h-32 rounded-full overflow-hidden border border-[#F7E5F0] shadow-md shrink-0">
-                    <img src="romana.webp" alt="Romana" class="w-full h-full object-cover">
+                    <picture>
+                        <source srcset="romana.webp" type="image/webp">
+                        <img src="romana.webp" alt="Romana" loading="lazy" decoding="async" class="w-full h-full object-cover">
+                    </picture>
                 </div>
                 <div class="space-y-4 text-center md:text-left">
                     <span class="text-xs tracking-wider accent-text uppercase font-semibold">Kosmetika, permanentní make-up & piercing</span>
@@ -350,7 +454,6 @@
         </div>
     </section>
 
-
     <section id="tab-cenik" class="tab-content hidden">
         <div class="max-w-6xl mx-auto px-4 py-12">
             <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
@@ -363,44 +466,53 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                 <!-- Manikúra Ceník Card -->
                 <button type="button" class="w-full text-left bg-white border border-[#F7E5F0] rounded-3xl p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#DDA1C6]" onclick="openLightbox('cenik_manikura.webp', 'Ceník Manikúra')">
-                    <h2 class="text-2xl font-normal mb-4 pb-2 border-b border-[#F7E5F0] tracking-wide text-gray-800 relative after:content-[''] after:block after:w-10 after:h-[2px] after:bg-[#DDA1C6] after:mt-2">Ceník Manikúra</h2>
-                    <div class="overflow-hidden rounded-2xl relative bg-[#FCF4F8]/50 p-2 flex items-center justify-center">
-                        <img src="cenik_manikura.webp" alt="Ceník Manikúra" class="w-full h-auto rounded-xl shadow-sm transition-transform duration-500 group-hover:scale-[1.01]">
-                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-2xl">
+                    <span class="block text-2xl font-serif font-normal mb-4 pb-2 border-b border-[#F7E5F0] tracking-wide text-gray-800 relative after:content-[''] after:block after:w-10 after:h-0.5 after:bg-[#DDA1C6] after:mt-2">Ceník Manikúra</span>
+                    <span class="block overflow-hidden rounded-2xl relative bg-[#FCF4F8]/50 p-2 flex items-center justify-center">
+                        <picture>
+                            <source srcset="cenik_manikura.webp" type="image/webp">
+                            <img src="cenik_manikura.webp" alt="Ceník Manikúra" loading="lazy" decoding="async" class="w-full h-auto rounded-xl shadow-sm transition-transform duration-500 group-hover:scale-[1.01]">
+                        </picture>
+                        <span class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-2xl">
                             <span class="text-white text-xs font-semibold tracking-wider uppercase px-4 py-2 bg-[#A86A91]/90 rounded-full shadow-md backdrop-blur-xs flex items-center gap-1.5">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" /></svg>
                                 Zvětšit ceník
                             </span>
-                        </div>
-                    </div>
+                        </span>
+                    </span>
                 </button>
 
                 <!-- Pedikúra Ceník Card -->
                 <button type="button" class="w-full text-left bg-white border border-[#F7E5F0] rounded-3xl p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#DDA1C6]" onclick="openLightbox('cenik_pedikura.webp', 'Ceník Pedikúra')">
-                    <h2 class="text-2xl font-normal mb-4 pb-2 border-b border-[#F7E5F0] tracking-wide text-gray-800 relative after:content-[''] after:block after:w-10 after:h-[2px] after:bg-[#DDA1C6] after:mt-2">Ceník Pedikúra</h2>
-                    <div class="overflow-hidden rounded-2xl relative bg-[#FCF4F8]/50 p-2 flex items-center justify-center">
-                        <img src="cenik_pedikura.webp" alt="Ceník Pedikúra" class="w-full h-auto rounded-xl shadow-sm transition-transform duration-500 group-hover:scale-[1.01]">
-                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-2xl">
+                    <span class="block text-2xl font-serif font-normal mb-4 pb-2 border-b border-[#F7E5F0] tracking-wide text-gray-800 relative after:content-[''] after:block after:w-10 after:h-0.5 after:bg-[#DDA1C6] after:mt-2">Ceník Pedikúra</span>
+                    <span class="block overflow-hidden rounded-2xl relative bg-[#FCF4F8]/50 p-2 flex items-center justify-center">
+                        <picture>
+                            <source srcset="cenik_pedikura.webp" type="image/webp">
+                            <img src="cenik_pedikura.webp" alt="Ceník Pedikúra" loading="lazy" decoding="async" class="w-full h-auto rounded-xl shadow-sm transition-transform duration-500 group-hover:scale-[1.01]">
+                        </picture>
+                        <span class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-2xl">
                             <span class="text-white text-xs font-semibold tracking-wider uppercase px-4 py-2 bg-[#A86A91]/90 rounded-full shadow-md backdrop-blur-xs flex items-center gap-1.5">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" /></svg>
                                 Zvětšit ceník
                             </span>
-                        </div>
-                    </div>
+                        </span>
+                    </span>
                 </button>
 
                 <!-- Kosmetika Ceník Card -->
                 <button type="button" class="w-full text-left bg-white border border-[#F7E5F0] rounded-3xl p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#DDA1C6]" onclick="openLightbox('cenik_romana.webp', 'Ceník Kosmetika')">
-                    <h2 class="text-2xl font-normal mb-4 pb-2 border-b border-[#F7E5F0] tracking-wide text-gray-800 relative after:content-[''] after:block after:w-10 after:h-[2px] after:bg-[#DDA1C6] after:mt-2">Ceník Kosmetika</h2>
-                    <div class="overflow-hidden rounded-2xl relative bg-[#FCF4F8]/50 p-2 flex items-center justify-center">
-                        <img src="cenik_romana.webp" alt="Ceník Kosmetika" class="w-full h-auto rounded-xl shadow-sm transition-transform duration-500 group-hover:scale-[1.01]">
-                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-2xl">
+                    <span class="block text-2xl font-serif font-normal mb-4 pb-2 border-b border-[#F7E5F0] tracking-wide text-gray-800 relative after:content-[''] after:block after:w-10 after:h-0.5 after:bg-[#DDA1C6] after:mt-2">Ceník Kosmetika</span>
+                    <span class="block overflow-hidden rounded-2xl relative bg-[#FCF4F8]/50 p-2 flex items-center justify-center">
+                        <picture>
+                            <source srcset="cenik_romana.webp" type="image/webp">
+                            <img src="cenik_romana.webp" alt="Ceník Kosmetika" loading="lazy" decoding="async" class="w-full h-auto rounded-xl shadow-sm transition-transform duration-500 group-hover:scale-[1.01]">
+                        </picture>
+                        <span class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-2xl">
                             <span class="text-white text-xs font-semibold tracking-wider uppercase px-4 py-2 bg-[#A86A91]/90 rounded-full shadow-md backdrop-blur-xs flex items-center gap-1.5">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" /></svg>
                                 Zvětšit ceník
                             </span>
-                        </div>
-                    </div>
+                        </span>
+                    </span>
                 </button>
             </div>
 
@@ -530,7 +642,7 @@
             </div>
 
             <div class="bg-[#FCFAFB] rounded-3xl h-64 border border-[#F7E5F0] shadow-inner flex flex-col items-center justify-center p-6 text-center space-y-2 relative overflow-hidden group">
-                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#DDA1C6_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#DDA1C6_1px,transparent_1px)] bg-size-[16px_16px]"></div>
                 <div class="relative flex flex-col items-center space-y-2 bg-white/60 px-8 py-4 rounded-2xl backdrop-blur-sm border border-[#F7E5F0]/50 shadow-sm">
                     <span class="text-2xl accent-text">📍</span>
                     <h4 class="font-serif text-lg font-normal text-gray-800">Najdete nás zde</h4>
@@ -576,7 +688,7 @@
         </div>
 
         <!-- Sidebar Navigation Links -->
-        <nav class="flex-grow p-6 space-y-3 overflow-y-auto">
+        <nav class="grow p-6 space-y-3 overflow-y-auto">
             <button onclick="switchTabFromSidebar('uvod')" id="sidebar-nav-uvod" class="sidebar-link w-full text-left px-4 py-3.5 rounded-xl text-sm font-medium tracking-wide flex items-center justify-between transition-all duration-200 cursor-pointer">
                 <span>Úvod</span>
                 <span class="text-xs opacity-60">→</span>
@@ -792,10 +904,22 @@
             card.setAttribute('aria-label', `Zvětšit ukázku práce: ${titlePrefix}`);
             card.onclick = () => openLightbox(imgSrc, titlePrefix);
 
+            const picture = document.createElement('picture');
+            picture.className = 'w-full h-full block';
+
+            const source = document.createElement('source');
+            source.srcset = imgSrc;
+            source.type = 'image/webp';
+
             const img = document.createElement('img');
             img.src = imgSrc;
             img.alt = titlePrefix;
+            img.loading = 'lazy';
+            img.decoding = 'async';
             img.className = 'w-full h-full object-cover rounded-2xl';
+
+            picture.appendChild(source);
+            picture.appendChild(img);
 
             const overlay = document.createElement('div');
             overlay.className = 'absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center';
@@ -805,7 +929,7 @@
             zoomBtn.textContent = 'Zvětšit';
 
             overlay.appendChild(zoomBtn);
-            card.appendChild(img);
+            card.appendChild(picture);
             card.appendChild(overlay);
             container.appendChild(card);
         });
@@ -869,6 +993,8 @@
             const ext = extensions[extIndex];
             const img = new Image();
             img.src = `gallery/photo${index}${ext}`;
+            img.loading = 'lazy';
+            img.decoding = 'async';
             img.className = 'w-full h-full object-cover rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-[1.03] aspect-square border border-[#F7E5F0]';
             img.alt = `Galerie - Obrázek ${index}`;
 
@@ -877,7 +1003,16 @@
                 if (placeholder) {
                     placeholder.setAttribute('aria-label', `Zvětšit fotku z galerie číslo ${index}`);
                     placeholder.onclick = () => openLightbox(img.src, `Galerie - Obrázek ${index}`);
-                    placeholder.appendChild(img);
+                    
+                    const picture = document.createElement('picture');
+                    picture.className = 'w-full h-full block';
+                    const source = document.createElement('source');
+                    source.srcset = img.src;
+                    source.type = 'image/webp';
+                    picture.appendChild(source);
+                    picture.appendChild(img);
+
+                    placeholder.appendChild(picture);
                     placeholder.classList.remove('hidden');
                     loadedCount++;
                     consecutiveFailures = 0; // Resetovat chyby při úspěšném načtení
@@ -965,7 +1100,7 @@
 </script>
 
 <!-- Lightbox Modal for pricing list images -->
-<div id="pricing-lightbox" role="dialog" aria-modal="true" aria-label="Detail obrázku" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out">
+<div id="pricing-lightbox" role="dialog" aria-modal="true" aria-label="Detail obrázku" class="fixed inset-0 z-100 flex items-center justify-center bg-black/80 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out">
     <button id="lightbox-close-btn" class="absolute top-6 right-6 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-white" aria-label="Zavřít detail obrázku">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
