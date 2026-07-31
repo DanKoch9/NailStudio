@@ -1068,118 +1068,93 @@
         });
     }
 
-    // Načítání galerie (optimalizované pro paralelní načítání v dávkách a bezpečný lazy-loading)
-    function loadGalleryImages() {
+    // Načítání galerie (z manifest.json pro spolehlivé načtení všech obrázků)
+    async function loadGalleryImages() {
         const container = document.getElementById('gallery-grid');
         if (!container) return;
-        
-        const batchSize = 12; // Načítat po 12 snímcích v jedné paralelní dávce
-        const extensions = ['.webp', '.jpeg', '.jpg', '.png']; // Hledat WebP na prvním místě
-        
-        let currentStart = 1;
-        let consecutiveFailures = 0;
-        const maxConsecutiveFailures = 8; // Zastavit, pokud po sobě selže 8 snímků
-        let loadedCount = 0;
 
-        function loadBatch() {
-            const start = currentStart;
-            const end = currentStart + batchSize - 1;
-            let completedInBatch = 0;
+        let images = [];
 
-            // Vytvořit skryté placeholdery pro tuto dávku
-            for (let i = start; i <= end; i++) {
-                const placeholder = document.createElement('button');
-                placeholder.type = 'button';
-                placeholder.id = `gallery-item-${i}`;
-                placeholder.className = 'hidden overflow-hidden rounded-2xl bg-white p-1.5 border border-[#F7E5F0]/50 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#DDA1C6] text-left cursor-pointer w-full';
-                container.appendChild(placeholder);
+        // 1. Načtení seznamu obrázků z manifest.json
+        try {
+            const response = await fetch('manifest.json');
+            if (response.ok) {
+                const manifest = await response.json();
+                if (manifest && Array.isArray(manifest.gallery)) {
+                    images = manifest.gallery;
+                    console.log(`Loaded ${images.length} gallery images from manifest.json`);
+                }
             }
+        } catch (e) {
+            console.warn('Could not load gallery from manifest.json:', e);
+        }
 
-            // Spustit načítání obrázků v této dávce paralelně
-            for (let i = start; i <= end; i++) {
-                tryLoadImageForIndex(i, 0, () => {
-                    completedInBatch++;
-                    if (completedInBatch === batchSize) {
-                        currentStart += batchSize;
-                        
-                        // Pokud nemáme příliš mnoho po sobě jdoucích chyb, pokračujeme na další dávku
-                        if (consecutiveFailures < maxConsecutiveFailures) {
-                            loadBatch();
-                        } else {
-                            cleanUpFailedPlaceholders();
-                            checkEmptyGallery();
+        // 2. Fallback: Výpis adresáře (pro lokální vývoj bez manifestu)
+        if (images.length === 0) {
+            try {
+                const response = await fetch('gallery/');
+                if (response.ok) {
+                    const htmlText = await response.text();
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(htmlText, 'text/html');
+                    const links = Array.from(doc.querySelectorAll('a'));
+                    const imageExtensions = ['.jpg', '.jpeg', '.png', '.webp'];
+
+                    links.forEach(link => {
+                        const href = link.getAttribute('href');
+                        if (!href) return;
+                        const filename = decodeURIComponent(href).split('/').pop();
+                        const hasImgExt = imageExtensions.some(ext => filename.toLowerCase().endsWith(ext));
+                        if (hasImgExt && !images.includes(filename)) {
+                            images.push(filename);
                         }
-                    }
-                });
+                    });
+                    console.log(`Parsed ${images.length} gallery images from directory listing`);
+                }
+            } catch (error) {
+                console.error('Error parsing gallery directory listing:', error);
             }
         }
 
-        function tryLoadImageForIndex(index, extIndex, onComplete) {
-            if (extIndex >= extensions.length) {
-                const placeholder = document.getElementById(`gallery-item-${index}`);
-                if (placeholder) placeholder.remove();
-                consecutiveFailures++;
-                onComplete();
-                return;
-            }
+        // 3. Prázdná galerie
+        if (images.length === 0) {
+            container.innerHTML = `
+                <div class="col-span-full text-center py-10 space-y-2">
+                    <p class="text-[#A86A91] font-medium">Galerie je zatím prázdná.</p>
+                    <p class="text-gray-400 font-light text-sm">Nahrajte obrázky do složky <strong>gallery</strong> a spusťte <code>npm run manifest</code>.</p>
+                </div>`;
+            return;
+        }
 
-            const ext = extensions[extIndex];
-            const img = new Image();
-            img.src = `gallery/photo${index}${ext}`;
+        // 4. Vykreslení obrázků
+        images.forEach((filename, index) => {
+            const imgSrc = `gallery/${filename}`;
+
+            const card = document.createElement('button');
+            card.type = 'button';
+            card.className = 'overflow-hidden rounded-2xl bg-white p-1.5 border border-[#F7E5F0]/50 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#DDA1C6] text-left cursor-pointer w-full';
+            card.setAttribute('aria-label', `Zvětšit fotku z galerie číslo ${index + 1}`);
+            card.onclick = () => openLightbox(imgSrc, `Galerie - Obrázek ${index + 1}`);
+
+            const picture = document.createElement('picture');
+            picture.className = 'w-full h-full block';
+
+            const source = document.createElement('source');
+            source.srcset = imgSrc;
+            source.type = 'image/webp';
+
+            const img = document.createElement('img');
+            img.src = imgSrc;
+            img.alt = `Galerie - Obrázek ${index + 1}`;
             img.loading = 'lazy';
             img.decoding = 'async';
             img.className = 'w-full h-full object-cover rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-[1.03] aspect-square border border-[#F7E5F0]';
-            img.alt = `Galerie - Obrázek ${index}`;
 
-            img.onload = () => {
-                const placeholder = document.getElementById(`gallery-item-${index}`);
-                if (placeholder) {
-                    placeholder.setAttribute('aria-label', `Zvětšit fotku z galerie číslo ${index}`);
-                    placeholder.onclick = () => openLightbox(img.src, `Galerie - Obrázek ${index}`);
-                    
-                    const picture = document.createElement('picture');
-                    picture.className = 'w-full h-full block';
-                    const source = document.createElement('source');
-                    source.srcset = img.src;
-                    source.type = 'image/webp';
-                    picture.appendChild(source);
-                    picture.appendChild(img);
-
-                    placeholder.appendChild(picture);
-                    placeholder.classList.remove('hidden');
-                    loadedCount++;
-                    consecutiveFailures = 0; // Resetovat chyby při úspěšném načtení
-                }
-                onComplete();
-            };
-
-            img.onerror = () => {
-                tryLoadImageForIndex(index, extIndex + 1, onComplete);
-            };
-        }
-
-        function cleanUpFailedPlaceholders() {
-            const placeholders = container.querySelectorAll('[id^="gallery-item-"]');
-            placeholders.forEach(p => {
-                if (p.classList.contains('hidden')) {
-                    p.remove();
-                }
-            });
-        }
-
-        function checkEmptyGallery() {
-            const visibleItems = container.querySelectorAll('[id^="gallery-item-"]:not(.hidden)');
-            if (visibleItems.length === 0) {
-                container.innerHTML = `
-                    <div class="col-span-full text-center py-10 space-y-2">
-                        <p class="text-[#A86A91] font-medium">Galerie je zatím prázdná.</p>
-                        <p class="text-gray-400 font-light text-sm">Nahrajte obrázky do složky <strong>gallery</strong>.</p>
-                    </div>`;
-            }
-        }
-
-        // Spustit první dávku
-        loadBatch();
+            picture.appendChild(source);
+            picture.appendChild(img);
+            card.appendChild(picture);
+            container.appendChild(card);
+        });
     }
 
     // Inicializace a obsluha událostí (odstranění zastaralých inline event.stopPropagation a event.preventDefault)
