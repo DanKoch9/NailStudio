@@ -315,6 +315,17 @@
                 </div>
             </div>
         </div>
+
+        <!-- Storno podmínky one-liner na hlavní stránce -->
+        <div class="max-w-5xl mx-auto px-4 pb-16 pt-8">
+            <div class="bg-[#FCF4F8] rounded-2xl p-5 md:p-6 border border-[#F7E5F0] flex items-start space-x-3 text-sm text-gray-600 leading-relaxed font-light shadow-sm">
+                <span class="text-lg shrink-0 mt-0.5">📋</span>
+                <p>mohu
+                    Vážíme si vašeho i našeho času. Přečtěte si prosím naše rezervační a storno podmínky, ať vám můžeme vždy poskytnout ty nejlepší služby.
+                    <button onclick="switchTab('storno')" class="accent-text font-semibold hover:text-[#C88FB0] transition-colors cursor-pointer underline underline-offset-2">Více info</button>
+                </p>
+            </div>
+        </div>
     </section>
 
     <!-- Detail staff-katka (Katka - spolumajitelka) -->
@@ -453,6 +464,120 @@
         </div>
     </section>
 
+    <!-- Storno podmínky - Cancellation Terms Page -->
+    <section id="tab-storno" class="tab-content hidden">
+        <div class="max-w-4xl mx-auto px-4 py-12">
+            <button onclick="switchTab('uvod')" class="mb-8 flex items-center space-x-2 text-xs font-semibold tracking-wider text-[#A86A91] hover:text-[#C88FB0] transition-colors uppercase cursor-pointer focus:outline-none focus:underline">
+                <span>← Zpět na úvod</span>
+            </button>
+
+            <div class="text-center max-w-2xl mx-auto mb-12 space-y-4">
+                <h1 class="text-4xl font-normal tracking-wide text-gray-800">Storno a změna rezervace</h1>
+                <p class="text-gray-500 font-light text-sm leading-relaxed">
+                    📌 Rezervační a storno podmínky
+                </p>
+            </div>
+
+            <div class="bg-white border border-[#F7E5F0] rounded-3xl p-8 md:p-12 shadow-sm space-y-10 relative overflow-hidden">
+                <div class="absolute top-0 left-0 right-0 h-1 accent-bg opacity-70"></div>
+
+                <!-- Úvod -->
+                <div class="space-y-4">
+                    <p class="text-gray-600 leading-relaxed font-light text-base">
+                        Vážené klientky, vážení klienti,<br>
+                        vážíme si vašeho času i toho svého. Abychom mohly zajistit maximální kvalitu služeb a vyhovět všem zájemcům, platí v salonu následující pravidla pro rušení termínů.
+                    </p>
+                    <div class="bg-[#DDA1C6]/15 rounded-2xl p-4 border border-[#DDA1C6]/30 text-sm text-gray-600 leading-relaxed font-light">
+                        <p>Odesláním rezervace (telefonicky, zprávou, emailem nebo prostřednictvím sociálních sítí) s těmito podmínkami vyjadřujete svůj souhlas.</p>
+                    </div>
+                </div>
+
+                <!-- 1. Změna nebo zrušení termínu -->
+                <div class="space-y-4">
+                    <h2 class="text-2xl font-normal tracking-wide text-gray-800 relative after:content-[''] after:block after:w-10 after:h-0.5 after:bg-[#DDA1C6] after:mt-2">
+                        🕐 1. Změna nebo zrušení termínu
+                    </h2>
+                    <p class="text-gray-600 leading-relaxed font-light text-sm">
+                        Pokud víte, že na domluvený termín nemůžete dorazit, dejte mi prosím vědět co nejdříve.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3 bg-[#FCF4F8] rounded-xl p-4 border border-[#F7E5F0]">
+                            <span class="text-lg shrink-0">✅</span>
+                            <div>
+                                <p class="text-sm font-semibold text-gray-700">Více než 24 hodin předem</p>
+                                <p class="text-xs text-gray-500 font-light mt-1">Zrušení nebo přesun termínu je zcela <strong class="accent-text">ZDARMA</strong>.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 bg-[#FCF4F8] rounded-xl p-4 border border-[#F7E5F0]">
+                            <span class="text-lg shrink-0">⚠️</span>
+                            <div>
+                                <p class="text-sm font-semibold text-gray-700">Méně než 24 hodin předem</p>
+                                <p class="text-xs text-gray-500 font-light mt-1">V tomto případě bude při příští návštěvě zaúčtován storno poplatek ve výši <strong class="accent-text">50 % z ceny objednané služby</strong>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Nedostavení se bez omluvy -->
+                <div class="space-y-4">
+                    <h2 class="text-2xl font-normal tracking-wide text-gray-800 relative after:content-[''] after:block after:w-10 after:h-0.5 after:bg-[#DDA1C6] after:mt-2">
+                        ❌ 2. Nedostavení se bez omluvy (No-show)
+                    </h2>
+                    <p class="text-gray-600 leading-relaxed font-light text-sm">
+                        Pokud na termín nedorazíte a vůbec se neomluvíte, vzniká mi stoprocentní škoda za nevyužitý čas.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-600 font-light">
+                        <li class="flex items-start gap-3">
+                            <span class="accent-text text-lg -mt-0.5">•</span>
+                            <span>V takovém případě vám bude vystavena faktura na <strong class="font-semibold">100 % ceny služby</strong>, případně vám bude tato částka připočtena k příští návštěvě.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="accent-text text-lg -mt-0.5">•</span>
+                            <span>Do uhrazení tohoto dluhu nebude možné rezervovat další termín.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="accent-text text-lg -mt-0.5">•</span>
+                            <span>V případě opakování si salón může účtovat zálohu ve výši <strong class="font-semibold">50 % z požadované služby</strong>.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 3. Pozdní příchod -->
+                <div class="space-y-4">
+                    <h2 class="text-2xl font-normal tracking-wide text-gray-800 relative after:content-[''] after:block after:w-10 after:h-0.5 after:bg-[#DDA1C6] after:mt-2">
+                        ⌛ 3. Pozdní příchod
+                    </h2>
+                    <p class="text-gray-600 leading-relaxed font-light text-sm">
+                        Pokud se opozdíte, prosím o zprávu.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3 bg-[#FCF4F8] rounded-xl p-4 border border-[#F7E5F0]">
+                            <span class="text-lg shrink-0">🕐</span>
+                            <div>
+                                <p class="text-sm font-semibold text-gray-700">Zpoždění do 15 minut</p>
+                                <p class="text-xs text-gray-500 font-light mt-1">Uděláme maximum, co v rámci zbývajícího času stihneme, cena služby se však nemění.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 bg-[#FCF4F8] rounded-xl p-4 border border-[#F7E5F0]">
+                            <span class="text-lg shrink-0">🚫</span>
+                            <div>
+                                <p class="text-sm font-semibold text-gray-700">Zpoždění nad 15 minut</p>
+                                <p class="text-xs text-gray-500 font-light mt-1">Bohužel nemusí být možné službu z kapacitních důvodů provést a termín bude muset být zrušen (platí podmínky jako pro zrušení méně než 24 hodin předem).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA zpět -->
+            <div class="text-center mt-10">
+                <button onclick="switchTab('kontakt')" class="accent-bg text-white text-xs font-semibold tracking-wider px-6 py-3 rounded-xl hover:bg-[#C88FB0] transition-colors shadow-sm uppercase cursor-pointer">
+                    Rezervovat termín
+                </button>
+            </div>
+        </div>
+    </section>
+
     <section id="tab-cenik" class="tab-content hidden">
         <div class="max-w-6xl mx-auto px-4 py-12">
             <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
@@ -544,6 +669,15 @@
                 <h1 class="text-4xl font-normal tracking-wide text-gray-800">Spojte se s námi</h1>
                 <p class="text-gray-500 font-light text-sm leading-relaxed">
                     Jsme tu pro vás. Ať už máte dotaz ohledně našich služeb, nebo se chcete rovnou objednat, neváhejte nás kontaktovat.
+                </p>
+            </div>
+
+            <!-- Storno podmínky one-liner na stránce rezervace -->
+            <div class="bg-[#FCF4F8] rounded-2xl p-5 border border-[#F7E5F0] flex items-start space-x-3 text-sm text-gray-600 leading-relaxed font-light shadow-sm mb-12">
+                <span class="text-lg shrink-0 mt-0.5">📋</span>
+                <p>
+                    Vážíme si vašeho i našeho času. Přečtěte si prosím naše rezervační a storno podmínky, ať vám můžeme vždy poskytnout ty nejlepší služby.
+                    <button onclick="switchTab('storno')" class="accent-text font-semibold hover:text-[#C88FB0] transition-colors cursor-pointer underline underline-offset-2">Více info</button>
                 </p>
             </div>
 
